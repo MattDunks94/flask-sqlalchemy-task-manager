@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from taskmanager import app, db
 from taskmanager.models import Category, Task
 
@@ -11,7 +11,7 @@ def home():
 def categories():
     return render_template("categories.html")
 
-
+# This does not redirect back to categories route :( bug?
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
