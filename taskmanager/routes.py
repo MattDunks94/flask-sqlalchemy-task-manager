@@ -7,9 +7,11 @@ from taskmanager.models import Category, Task
 def home():
     return render_template("tasks.html")
 
+
 @app.route("/categories")
 def categories():
     return render_template("categories.html")
+
 
 # This does not redirect back to categories route :( bug?
 @app.route("/add_category", methods=["GET", "POST"])
