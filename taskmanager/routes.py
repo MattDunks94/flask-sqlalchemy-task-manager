@@ -33,3 +33,14 @@ def edit_category(category_id):
         db.session.commit()
         return redirect(url_for("categories"))
     return render_template("edit_category.html", category=category)
+
+
+# Deletes chosen category, by user, and returns to categories.html
+@app.route("/delete_category/<int:category_id>")
+def delete_category(category_id):
+    # Get category or display '404' error message
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    # Redirect to categories route
+    return redirect(url_for("categories"))
