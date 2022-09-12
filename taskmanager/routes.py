@@ -27,6 +27,7 @@ def add_category():
 
 @app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
+    # Get chosen category or display '404' error message
     category = Category.query.get_or_404(category_id)
     if request.method == "POST":
         category.category_name = request.form.get("category_name")
@@ -38,7 +39,7 @@ def edit_category(category_id):
 # Deletes chosen category, by user, and returns to categories.html
 @app.route("/delete_category/<int:category_id>")
 def delete_category(category_id):
-    # Get category or display '404' error message
+    # Get chosen category or display '404' error message
     category = Category.query.get_or_404(category_id)
     db.session.delete(category)
     db.session.commit()
