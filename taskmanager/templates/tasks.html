@@ -16,11 +16,14 @@
     <li>
         <div class="collapsible-header white-text light-blue darken-4">
             <i class="fas fa-caret-down"></i>
+            <!-- strftime displays day/month/year -->
             <strong>{{ task.task_name }}</strong> : {{ task.due_date.strftime("%d %B, %Y") }}
+            <!-- If statement checking if a task is important, if so displays fa icon (!) -->
             {% if task.is_urgent == True %}
             <i class="fas fa-exclamation-circle light-blue-text text-lighten-2"></i>
             {% endif %}
         </div>
+        <!-- Collapsible unordered list -->
         <div class="collapsible-body">
             <strong>{{ task.category }}</strong>
             <p>{{ task.task_description }}</p>
