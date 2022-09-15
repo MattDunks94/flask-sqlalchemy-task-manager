@@ -77,3 +77,12 @@ def edit_task(task_id):
         task.category_id = request.form.get("category_id")
         db.session.commit()
     return render_template("edit_task.html", task=task, categories=categories)
+
+    @app.route("/delete_task/<int:task_id>")
+def delete_task(task_id):
+    # Get chosen task or display '404' error message
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    # Redirect to home route
+    return redirect(url_for("home"))
