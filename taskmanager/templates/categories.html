@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col s12 center-align">
+        <!-- When clicked, executes 'add_category' route function (routes.py) -->
         <a href="{{ url_for('add_category') }}" class="btn-large light-blue darken-2">
             Add Category <i class="fas fa-plus-square right"></i>
         </a>
@@ -17,10 +18,13 @@
     <div class="col s12 m6 l3">
         <div class="card light-blue darken-4 center-align">
             <div class="card-content white-text">
+                <!-- Displays category_name from our taskmanager db -->
                 <span class="card-title">{{ category.category_name }}</span>
             </div>
             <div class="card-action">
+                <!-- When clicked, executes 'edit_category' route function (routes.py) -->
                 <a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn green accent-4">Edit</a>
+                <!-- When clicked, executes 'delete_category' route function (routes.py) -->
                 <a href="{{ url_for('delete_category', category_id=category.id) }}" class="btn red">Delete</a>
             </div>
         </div>
